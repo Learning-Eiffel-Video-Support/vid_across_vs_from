@@ -81,6 +81,9 @@ feature {NONE} -- Implementation
 
 	descent_convergence_at_x (a_initial_x: REAL_64; a_max_iterations: INTEGER): REAL_64
 			-- Compute Gradient Descent until approaching convergence.
+		note
+			EIS: "name=java_example_as_basis",
+					"src=https://www.baeldung.com/java-gradient-descent"
 		require
 			has_precision: precision /= 0.0
 			has_step: step_coefficient /= 0.0
