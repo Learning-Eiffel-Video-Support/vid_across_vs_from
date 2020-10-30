@@ -33,20 +33,24 @@ feature -- Test routines
 		local
 			x, y: REAL_64
 		do
+				-- Test just the f-of-x function.
 			y := f(-2.25)
 			assert_strings_equal ("rough_global_minima", "-6.046875", y.out)
-
 			y := f(1.50)
 			assert_strings_equal ("rough_local_minima", "-1.875", y.out)
 
+
+				-- Prepare by setting `precision' and `step_coefficient' values.
 			precision := 0.000001
 			step_coefficient := 0.1
 
+				-- Test the Local Minima for F(x)
 			x := descent_convergence_at_x (1, 100)
 			assert_integers_equal ("local_iterations", 60, last_iteration_count)
 			assert_strings_equal ("local_minima_x", "1.8164978634483617", x.out)
 			assert_strings_equal ("local_minima_y", "-2.0886621078930445", last_y.out)
 
+				-- Test the Global Minima for F(x)
 			x := descent_convergence_at_x (-1, 100)
 			assert_integers_equal ("global_iterations", 55, last_iteration_count)
 			assert_strings_equal ("global_minima_x", "-2.1546997874679086", x.out)
@@ -68,8 +72,12 @@ feature {NONE} -- Implementation
 		end
 
 	last_iteration_count: INTEGER
+			-- When running `descent_convergence_at_x', what was
+			--	the	`last_iteration_count'?
 
 	last_y: REAL_64
+			-- When running `descent_convergence_at_x', what was
+			--	the	`last_y' value computed?
 
 	descent_convergence_at_x (a_initial_x: REAL_64; a_max_iterations: INTEGER): REAL_64
 			-- Compute Gradient Descent until approaching convergence.
