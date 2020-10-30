@@ -5,6 +5,7 @@ note
 	]"
 	testing: "type/manual"
 
+							-- Hover link, click open.
 	EIS: "name=TRY_IDE", "src=www.eiffel.com"
 	EIS: "name=BUY", "src=https://account.eiffel.com/licenses/_/buy/"
 
